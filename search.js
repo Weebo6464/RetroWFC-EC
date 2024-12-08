@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const specificMatch = matches[matches.length - 1];
                     resultSection.innerHTML = `
                         <h3>Error Code: ${errorCode}</h3>
+                        <p><strong>Error:</strong> ${specificMatch.comment}</p>
                         <p><strong>Description:</strong> ${specificMatch.description}</p>
                     `;
                 } else {
