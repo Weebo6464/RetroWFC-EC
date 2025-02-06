@@ -372,14 +372,15 @@
     ]
   },
   {
-    "name": "WWFC_LOG_IN_TIME",
+    "name": "WWFC_ACCOUNT_ACTIVATION_PENDING",
     "regex": "22011",
     "card": "22011",
-    "comment": "New IP has been logged in",
+    "comment": "Your account activation is still pending",
     "description": [
-      "if you are playing the game for the first time you have to wait 2 days to play online (for dolphin nand)"
+      "If you're trying to log in to Retro WFC for the first time, please note that account activation takes up to 2 days. You will need to wait before you can play online.",
+      "If it has been more than 2 days and you are still seeing this error, try logging in again later or contact Retro WFC mod for assistance."
     ]
-  },
+},
   {
     "name": "DWC_NAS_LOGIN_HTTP_ERROR",
     "regex": "23...",
