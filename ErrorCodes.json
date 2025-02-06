@@ -372,6 +372,15 @@
     ]
   },
   {
+    "name": "WWFC_LOG_IN_TIME",
+    "regex": "22011",
+    "card": "22011",
+    "comment": "New IP has been logged in",
+    "description": [
+      "if you are playing the game for the first time you have to wait 2 days to play online (for dolphin nand)"
+    ]
+  },
+  {
     "name": "DWC_NAS_LOGIN_HTTP_ERROR",
     "regex": "23...",
     "card": "23xxx",
