@@ -49,7 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const errorInput = document.getElementById('error-input');
     const searchButton = document.getElementById('search-button');
 
-    searchButton.addEventListener('click', getErrorInfo());
+    searchButton.addEventListener('click', getErrorInfo);
+
     errorInput.addEventListener('keyup', (event) => {
         if (event.key === 'Enter') {
             getErrorInfo();
