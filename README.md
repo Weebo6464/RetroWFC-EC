@@ -1,4 +1,4 @@
 # rwfcEC.github.io
 This is a simple Error Code Lookup for Retro WFC
 
-https://greenweebo38.github.io/RetroWFC-EC/
+https://weebo6464.github.io/RetroWFC-EC/
