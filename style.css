@@ -1,3 +1,29 @@
+:root {
+    --bg-color: #f4f4f9;
+    --text-color: #333;
+    --text-secondary-color: #555;
+    --surface-color: #fff;
+    --border-color: #ccc;
+    --accent-color: #4CAF50;
+    --accent-hover-color: #45a049;
+    --header-text-color: white;
+    --transition-speed: 0.3s;
+    --tooltip-bg-color: #555;
+    --tooltip-text-color: #fff;
+}
+
+body.dark-mode {
+    --bg-color: #2c3e50;
+    --text-color: #ecf0f1;
+    --text-secondary-color: #bdc3c7;
+    --surface-color: #34495e;
+    --border-color: #4a627a;
+    --accent-color: #9b59b6;
+    --accent-hover-color: #8e44ad;
+    --tooltip-bg-color: #f1c40f;
+    --tooltip-text-color: #333;
+}
+
 /* General Reset */
 body, h1, h2, p, input, button {
     margin: 0;
@@ -8,17 +34,19 @@ body, h1, h2, p, input, button {
 /* Body Styles */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     text-align: center;
     padding: 1rem;
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
 }
 
 /* Header */
 header {
-    background-color: #4CAF50;
-    color: white;
+    background-color: var(--accent-color);
+    color: var(--header-text-color);
     padding: 1rem 0;
+    transition: background-color var(--transition-speed) ease;
 }
 
 header h1 {
@@ -32,7 +60,7 @@ main {
 
 footer {
     font-size: 0.8rem;
-    color: #555;
+    color: var(--text-secondary-color);
     margin-top: 2rem;
     text-align: center;
     width: 100%;
@@ -50,22 +78,26 @@ footer {
 input {
     padding: 0.5rem;
     width: 300px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--border-color);
     border-radius: 4px;
     margin-right: 10px;
+    background-color: var(--surface-color);
+    color: var(--text-color);
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease;
 }
 
 button {
     padding: 0.5rem 1rem;
-    background-color: #4CAF50;
-    color: white;
+    background-color: var(--accent-color);
+    color: var(--header-text-color);
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    transition: background-color var(--transition-speed) ease;
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: var(--accent-hover-color);
 }
 
 /* Results Section */
@@ -79,7 +111,7 @@ button:hover {
 }
 
 .result-section p {
-    color: #555;
+    color: var(--text-secondary-color);
 }
 
 .result-description {
@@ -90,7 +122,94 @@ button:hover {
     text-align: left;
     display: none;;
 
-    background-color: #fff;
-    border: 1px solid #ccc;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
     border-radius: 4px;
+    transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+}
+
+.dark-mode-toggle {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+}
+
+.dark-mode-toggle > input[type="checkbox"] {
+    display: none;
+}
+
+.dark-mode-toggle > label {
+    cursor: pointer;
+    width: 50px;
+    height: 25px;
+    background-color: #333;
+    display: block;
+    border-radius: 100px;
+    position: relative;
+}
+
+.dark-mode-toggle > label::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 21px;
+    height: 21px;
+    background: #fff;
+    border-radius: 90px;
+    transition: 0.3s;
+}
+
+.dark-mode-toggle > input:checked + label {
+    background-color: var(--accent-color);
+}
+
+.dark-mode-toggle > input:checked + label::after {
+    left: calc(100% - 2px);
+    transform: translateX(-100%);
+}
+
+.dark-mode-toggle > label:active::after {
+    width: 28px;
+}
+
+/* --- Adding a Bounce Animation  --- */
+@keyframes bounce-up {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+.dark-mode-toggle .tooltip-text {
+    visibility: hidden;
+    opacity: 0;
+    width: max-content;
+    background-color: var(--tooltip-bg-color);
+    color: var(--tooltip-text-color);
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 12px;
+    position: absolute;
+    z-index: 1;
+    bottom: 140%;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+    transition: opacity 0.2s, background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+}
+
+/* vewy kool small animation :3 */
+.dark-mode-toggle:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+    animation: bounce-up 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
 }
