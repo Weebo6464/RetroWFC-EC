@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const darkModeSwitch = document.getElementById('dark-mode-switch');
+    const themeToggleButton = document.getElementById('theme-toggle-button');
     const body = document.body;
     const tooltipText = document.querySelector('.dark-mode-toggle .tooltip-text');
 
@@ -11,34 +11,31 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Function to apply the theme
+    // Function to apply the saved theme on page load
     const applySavedTheme = () => {
         const isDarkMode = localStorage.getItem('darkMode') === 'enabled';
         if (isDarkMode) {
             body.classList.add('dark-mode');
-            darkModeSwitch.checked = true;
         } else {
             body.classList.remove('dark-mode');
-            darkModeSwitch.checked = false;
         }
         updateTooltip();
     };
 
-    // Function to toggle the theme
+    // Function to toggle the theme and save the preference
     const toggleTheme = () => {
-        if (darkModeSwitch.checked) {
-            body.classList.add('dark-mode');
+        body.classList.toggle('dark-mode');
+        if (body.classList.contains('dark-mode')) {
             localStorage.setItem('darkMode', 'enabled');
         } else {
-            body.classList.remove('dark-mode');
             localStorage.setItem('darkMode', 'disabled');
         }
         updateTooltip();
     };
 
-    // Apply theme!
+    // Apply theme on initial load
     applySavedTheme();
 
-    // Add event listener for the toggle switch
-    darkModeSwitch.addEventListener('change', toggleTheme);
+    // Add event listener for the toggle button
+    themeToggleButton.addEventListener('click', toggleTheme);
 });
